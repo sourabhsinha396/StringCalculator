@@ -1,4 +1,7 @@
+import pytest
+
 from main import StringCalculator
+
 
 class TestStringCalculator:
     def test_empty_string_should_return_zero(self):
@@ -23,6 +26,11 @@ class TestStringCalculator:
 
         string_calculator = StringCalculator("-2,-3")
         assert string_calculator.get_sum() == -5
+
+    def test_should_fail_on_non_string_input(self):
+        with pytest.raises(IndexError):
+            string_calculator = StringCalculator("3.4")
+            assert string_calculator.get_sum()
 
 
 
