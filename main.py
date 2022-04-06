@@ -5,7 +5,8 @@ class StringCalculator:
     def _extract_number(self,value:str)->int:
         if value=="":
             return  0
-
+        return value
+        
     def get_sum(self)->int:
         return int(self.first)
 
