@@ -38,6 +38,6 @@ class TestStringCalculator:
         string_calculator = StringCalculator("0,0,0,0")
         assert string_calculator.get_sum() == 0
 
-    def test_new_line_delimeter_should_be_respected(self):
-        string_calculator = StringCalculator("1\n2,3")
+    def test_string_calculator_should_support_custom_delimiter(self):
+        string_calculator = StringCalculator("//;\n1;2,3")
         assert string_calculator.get_sum() == 6
