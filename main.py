@@ -3,7 +3,6 @@ from typing import List
 
 class StringCalculator:
     def __init__(self,values:str):
-        self.delimeter = "\n"
         delimeter_processed = self._process_delimeter(values)
         self.values = self._extract_numbers(delimeter_processed)
 
