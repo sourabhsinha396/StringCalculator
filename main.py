@@ -3,6 +3,7 @@ from typing import List
 
 class StringCalculator:
     def __init__(self,values:str):
+        self.negative_numbers = []
         self.delimiter = self._get_custom_delimiter(values)
         delimiter_hint_removed = self._trim_delimiter_hint(values)  # delimeter_hint_removed is for Hidden Temporal Coupling
         delimiter_processed = self._process_delimiter(delimiter_hint_removed)
@@ -34,7 +35,12 @@ class StringCalculator:
     def get_sum(self)->int:
         sum = 0
         for item in self.values:
+            if int(item) < 0:
+                self.negative_numbers.append(item)
             if item:
                 sum += int(item)
+        if self.negative_numbers:
+            negative_numbers = " ".join(self.negative_numbers)
+            raise ValueError(f"Negative numbers are not allowed, It contains {negative_numbers}")
         return sum
 
