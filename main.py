@@ -1,22 +1,20 @@
-from typing import Union,Tuple
+from typing import List
 
-
-str_or_int = Union[str,int]
 
 class StringCalculator:
-    def __init__(self,value:str):
-        self.first,self.second = self._extract_numbers(value)
+    def __init__(self,values:str):
+        self.values = self._extract_numbers(values)
 
-    def _extract_numbers(self,value:str)->Tuple[str_or_int,str_or_int]:
-        if value=="":
-            return  0,0
+    def _extract_numbers(self,values:str)->List:
+        if values=="":
+            return  []
 
-        if len(value.rstrip(","))==1:
-            return value.rstrip(","),0
-
-        values = value.split(",")
-        return values[0],values[1]
+        return values.split(",")
         
     def get_sum(self)->int:
-        return int(self.first) + int(self.second)
+        sum = 0
+        for item in self.values:
+            if item:
+                sum += int(item)
+        return sum
 

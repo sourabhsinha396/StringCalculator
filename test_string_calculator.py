@@ -28,9 +28,15 @@ class TestStringCalculator:
         assert string_calculator.get_sum() == -5
 
     def test_should_fail_on_non_string_input(self):
-        with pytest.raises(IndexError):
+        with pytest.raises(ValueError):
             string_calculator = StringCalculator("3.4")
             assert string_calculator.get_sum()
+
+    def test_should_accept_unknown_number_of_arguments(self):
+        string_calculator = StringCalculator("1,2,3,4")
+        assert string_calculator.get_sum() == 10
+        string_calculator = StringCalculator("0,0,0,0")
+        assert string_calculator.get_sum() == 0
 
 
 
